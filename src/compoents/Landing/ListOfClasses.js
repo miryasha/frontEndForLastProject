@@ -1,8 +1,24 @@
 import React from 'react'
+import { useState , useEffect } from 'react';
 import Container from 'react-bootstrap/Container'
 import Table from 'react-bootstrap/Table'
+import axios from "axios";
+
 
 const ListOfClasses = () => {
+
+    const [userList, setUserList] = useState([]);
+
+    useEffect(() => {
+    axios.get('http://jsonplaceholder.typicode.com/users')
+    .then(res => {
+    //   
+    console.log(res.data)
+    }).catch(err => {
+        console.log(err)
+      });
+  }, []);
+
     return (
         <Container>
             <Table striped bordered hover variant="primary">
